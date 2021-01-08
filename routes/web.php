@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\TesteController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+
+Route::resource('products', ProductController::class); //->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -14,32 +17,40 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/* Route::delete('/products/{id}/', [ProductController::class, 'destroy'])->name('products.destroy');
+Route::put('/products/{id}/', [ProductController::class, 'update'])->name('products.update');
+Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
+Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+ */
 
 /* Grupo de rotas */
 Route::get('/login', function () {
     return 'Login';
 })->name('login');
 
-// Route::middleware([])->group(function() {
+/* Route::middleware([])->group(function() {
 
-//     Route::prefix('admin')->group(function(){
+    Route::prefix('admin')->group(function(){
 
-//         Route::name('admin.')->group(function(){
+        Route::name('admin.')->group(function(){
 
-//             Route::get('/dashboard', [TesteController::class, 'teste'])->name('dashboard');
+            Route::get('/dashboard', [TesteController::class, 'teste'])->name('dashboard');
 
-//             Route::get('/financeiro', [TesteController::class, 'teste'])->name('financeiro');
+            Route::get('/financeiro', [TesteController::class, 'teste'])->name('financeiro');
 
-//             Route::get('/produtos', [TesteController::class, 'teste'])->name('produtos');
+            Route::get('/produtos', [TesteController::class, 'teste'])->name('produtos');
 
-//             Route::get('/', function () {
-//                 return redirect()->route('admin.dashboard');
-//             })->name('home');
+            Route::get('/', function () {
+                return redirect()->route('admin.dashboard');
+            })->name('home');
 
-//         });
+        });
 
-//     });
-// });
+    });
+}); */
 
 Route::group([
     'middleware' => [],
